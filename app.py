@@ -27,7 +27,6 @@ def get_ticker_base():
 	return ticker_list
 
 
-@st.cache(allow_output_mutation=True)
 def get_ticker(name):
 
 	ticker_df = load_stocks()
@@ -74,7 +73,6 @@ def get_detailed_chart_copy(data,name):
 
 	return chart
 
-@st.cache(allow_output_mutation=True)
 def get_nse_names():
 	names = []
 
@@ -95,7 +93,6 @@ def get_ticker_nse(name):
 	return ticker_data
 
 
-@st.cache(allow_output_mutation=True)
 def get_top_ten_gainers_loosers(flag):
 
 	if flag == 'Top Gainers':
