@@ -123,7 +123,7 @@ def get_hist_data_nse(symbol,start_date,end_date):
 
 
 def main():
-	st.sidebar.header('📈Zero-Tra Proto Trading App by @shashwat 👨‍🔧')
+	st.sidebar.header('📈Zero-Tra Proto Trading App by @shashwat 👨‍🔧v0.1')
 	st.sidebar.subheader('Choose a page to proceed:')
 	page = st.sidebar.selectbox("", ["🚀 Get Started","📈 U.S. Stock Markets", "📈 Indian Stock Markets - NSE", "⚡ Crypto"])
 	if page == '🚀 Get Started':
