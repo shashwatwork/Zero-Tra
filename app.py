@@ -196,13 +196,14 @@ def main():
 		
 			
 	elif page == '📈 Indian Stock Markets - NSE':
+		nse_obj = Nse()
 
 		ticker_list = get_nse_names()
 		stock_chosen = st.multiselect('Choose Stock', list(ticker_list[1:]),default= 'TATA CONSUMER PRODUCTS LIMITED')
 		st.info('Please select the Stock')
 		if len(stock_chosen) == 1:
 			ticker_data  = get_ticker_nse(name = stock_chosen[0])
-			quote = nse.get_quote(ticker_data)
+			quote = nse_obj.get_quote(ticker_data)
 			if st.checkbox("Show Company Info"):
 				st.info('Stock Selected --> {}'.format(quote['companyName']))
 				if st.button("Get Average Price"):
