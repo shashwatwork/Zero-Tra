@@ -203,42 +203,42 @@ def main():
 		st.info('Please select the Stock')
 		if len(stock_chosen) == 1:
 			ticker_data  = get_ticker_nse(name = stock_chosen[0])
-			quote = nse_obj.get_quote(ticker_data)
-			if st.checkbox("Show Company Info"):
-				st.info('Stock Selected --> {}'.format(quote['companyName']))
-				if st.button("Get Average Price"):
-					st.info(quote['averagePrice'])
-				if st.button("Get Open Price"):
-					st.info(quote['open'])
-				if st.button("Get Close Price"):
-					st.info(quote['closePrice'])
-				if st.button("Get Buy Price"):
-					st.info(quote['buyPrice1'])
-				if st.button("Get Sell Price"):
-					st.info(quote['sellPrice1'])
+			# quote = nse_obj.get_quote(ticker_data)
+			# if st.checkbox("Show Company Info"):
+			# 	st.info('Stock Selected --> {}'.format(quote['companyName']))
+			# 	if st.button("Get Average Price"):
+			# 		st.info(quote['averagePrice'])
+			# 	if st.button("Get Open Price"):
+			# 		st.info(quote['open'])
+			# 	if st.button("Get Close Price"):
+			# 		st.info(quote['closePrice'])
+			# 	if st.button("Get Buy Price"):
+			# 		st.info(quote['buyPrice1'])
+			# 	if st.button("Get Sell Price"):
+			# 		st.info(quote['sellPrice1'])
 
-				if st.checkbox('Get Stock Charts'):	
-					st.subheader("Get Stock Chart")
-					start_period = st.date_input('Select Start Period',value = date(2022,1,1))
-					end_period = st.date_input('Select End Period')
-					data = get_hist_data_nse(symbol=ticker_data,start_date=start_period,end_date=end_period)
-					chart = get_stock_chart(data = data,name = ticker_data)
-					st.success('Hooray!!!')
-					st.plotly_chart(chart)
-					if st.button('Show Detailed Chart'):
-						chart = get_detailed_chart_copy(data,name=ticker_data)
-						with st.spinner(text='In progress'):
-							time.sleep(5)
-							st.success('Hooray!!!')
-							st.plotly_chart(chart,use_container_width=True)
-				st.subheader('Get Top Gainers and Loosers')
-				slider_val = st.select_slider('Slide to Select Top Gainers and Loosers', options=['Top Gainers','Top Loosers'],)
-				if slider_val == 'Top Gainers':
-					data = get_top_ten_gainers_loosers(flag=slider_val)
-					st.write(data)
-				elif slider_val == 'Top Loosers':
-					data = get_top_ten_gainers_loosers(flag=slider_val)
-					st.write(data)
+			if st.checkbox('Get Stock Charts'):	
+				st.subheader("Get Stock Chart")
+				start_period = st.date_input('Select Start Period',value = date(2022,1,1))
+				end_period = st.date_input('Select End Period')
+				data = get_hist_data_nse(symbol=ticker_data,start_date=start_period,end_date=end_period)
+				chart = get_stock_chart(data = data,name = ticker_data)
+				st.success('Hooray!!!')
+				st.plotly_chart(chart)
+				if st.button('Show Detailed Chart'):
+					chart = get_detailed_chart_copy(data,name=ticker_data)
+					with st.spinner(text='In progress'):
+						time.sleep(5)
+						st.success('Hooray!!!')
+						st.plotly_chart(chart,use_container_width=True)
+			st.subheader('Get Top Gainers and Loosers')
+			slider_val = st.select_slider('Slide to Select Top Gainers and Loosers', options=['Top Gainers','Top Loosers'],)
+			if slider_val == 'Top Gainers':
+				data = get_top_ten_gainers_loosers(flag=slider_val)
+				st.write(data)
+			elif slider_val == 'Top Loosers':
+				data = get_top_ten_gainers_loosers(flag=slider_val)
+				st.write(data)
 		else:
 			st.error('Please select at least one Stock in the input above')
 	elif page == '⚡ Crypto':
