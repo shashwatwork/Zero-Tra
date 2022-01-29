@@ -231,14 +231,14 @@ def main():
 						time.sleep(5)
 						st.success('Hooray!!!')
 						st.plotly_chart(chart,use_container_width=True)
-			st.subheader('Get Top Gainers and Loosers')
-			slider_val = st.select_slider('Slide to Select Top Gainers and Loosers', options=['Top Gainers','Top Loosers'],)
-			if slider_val == 'Top Gainers':
-				data = get_top_ten_gainers_loosers(flag=slider_val)
-				st.write(data)
-			elif slider_val == 'Top Loosers':
-				data = get_top_ten_gainers_loosers(flag=slider_val)
-				st.write(data)
+			# st.subheader('Get Top Gainers and Loosers')
+			# slider_val = st.select_slider('Slide to Select Top Gainers and Loosers', options=['Top Gainers','Top Loosers'],)
+			# if slider_val == 'Top Gainers':
+			# 	data = get_top_ten_gainers_loosers(flag=slider_val)
+			# 	st.write(data)
+			# elif slider_val == 'Top Loosers':
+			# 	data = get_top_ten_gainers_loosers(flag=slider_val)
+			# 	st.write(data)
 		else:
 			st.error('Please select at least one Stock in the input above')
 	elif page == '⚡ Crypto':
