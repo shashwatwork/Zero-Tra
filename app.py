@@ -9,7 +9,6 @@ from nsepy import get_history
 from datetime import date
 cf.set_config_file(theme='white',sharing='public',offline=True)
 
-nse = Nse()
 
 
 @st.cache
@@ -74,8 +73,9 @@ def get_detailed_chart_copy(data,name):
 
 	return chart
 
-@st.cache(allow_output_mutation=True)
 def get_nse_names():
+	nse = Nse()
+
 	names = []
 
 	all_stock_codes = nse.get_stock_codes()
@@ -86,6 +86,8 @@ def get_nse_names():
 
 
 def get_ticker_nse(name):
+	nse = Nse()
+
 
 	all_stock_codes = nse.get_stock_codes()
 	ticker_data = all_stock_codes.get(str(name))
@@ -97,6 +99,8 @@ def get_ticker_nse(name):
 
 @st.cache(allow_output_mutation=True)
 def get_top_ten_gainers_loosers(flag):
+	nse = Nse()
+
 
 	if flag == 'Top Gainers':
 
