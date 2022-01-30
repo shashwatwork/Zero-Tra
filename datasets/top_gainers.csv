@@ -1,0 +1,11 @@
+symbol,series,openPrice,highPrice,lowPrice,ltp,previousPrice,netPrice,tradedQuantity,turnoverInLakhs,lastCorpAnnouncementDate,lastCorpAnnouncement
+NTPC,EQ,140.0,144.0,138.0,140.25,135.0,3.89,34009553.0,47936.46,03-Feb-2022,Interim Dividend
+UPL,EQ,778.0,806.5,777.55,791.1,771.95,2.48,4007799.0,31854.39,14-Jul-2021,Dividend - Rs 10 Per Share
+SUNPHARMA,EQ,816.0,842.9,812.1,829.45,812.1,2.14,5073701.0,42217.76,23-Aug-2021,Annual General Meeting/Dividend - Rs 2 Per Share
+TATACONSUM,EQ,706.5,729.9,706.5,718.5,705.95,1.78,2074152.0,14993.42,10-Jun-2021,Annual General Meeting/Dividend - Rs 4.05 Per Share
+INDUSINDBK,EQ,897.0,925.75,895.0,903.7,888.1,1.76,5520247.0,50334.72,17-Aug-2021,Dividend - Rs 5 Per Share
+ONGC,EQ,167.55,174.7,166.25,168.5,165.7,1.69,32790065.0,56251.36,22-Nov-2021,Interim Dividend - Rs 5.50 Per Share
+M&M,EQ,864.4,896.0,860.4,871.0,858.05,1.51,4208702.0,37100.13,15-Jul-2021,Annual General Meeting/Dividend - Rs 8.75 Per Share
+IOC,EQ,123.3,127.05,123.3,124.5,122.7,1.47,9996713.0,12533.88,11-Nov-2021,Interim Dividend - Rs 5 Per Share
+BHARTIARTL,EQ,714.9,754.0,701.65,717.0,707.25,1.38,21450677.0,154133.84,27-Sep-2021,Rights 1:14 @ Premium Rs 530/-
+ITC,EQ,215.1,219.25,215.1,217.5,214.6,1.35,15276991.0,33322.17,10-Jun-2021,Dividend - Rs 5.75 Per Share
