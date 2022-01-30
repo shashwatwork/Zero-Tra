@@ -1,0 +1,11 @@
+symbol,series,openPrice,highPrice,lowPrice,ltp,previousPrice,netPrice,tradedQuantity,turnoverInLakhs,lastCorpAnnouncementDate,lastCorpAnnouncement
+MARUTI,EQ,8795.0,8930.0,8522.35,8537.15,8820.2,-3.21,1045088.0,90826.93,05-Aug-2021,Dividend - Rs 45 Per Share
+TECHM,EQ,1446.0,1482.9,1406.25,1409.0,1445.6,-2.53,7080683.0,102721.59,02-Nov-2021,Special Dividend - Rs 15 Per Share
+POWERGRID,EQ,217.5,217.5,209.25,210.95,214.85,-1.82,14199037.0,30198.51,22-Dec-2021,Interim Dividend - Rs 4 Per Share/ Special Dividend - Rs 3 Per Share
+ICICIBANK,EQ,803.75,805.85,778.5,782.0,794.65,-1.59,14072314.0,111559.68,29-Jul-2021,Dividend - Rs 2 Per Share
+HEROMOTOCO,EQ,2720.2,2755.0,2663.05,2674.0,2715.0,-1.51,466238.0,12656.92,22-Jul-2021,Annual General Meeting/Dividend - Rs 25 Per Share/ Special Dividend - Rs 10 Per Share
+AXISBANK,EQ,778.1,784.7,761.5,764.0,773.85,-1.27,17765524.0,137816.05,04-Jul-2019,Annual General Meeting/ Dividend - Re 1 Per Share
+BAJAJFINSV,EQ,15601.0,15787.65,15150.0,15190.0,15359.85,-1.11,350931.0,54340.3,08-Jul-2021,Annual General Meeting/Dividend - Rs 3 Per Share
+SBIN,EQ,534.0,536.4,521.4,523.3,528.95,-1.07,24715250.0,130933.98,03-Jun-2021,Dividend - Rs 4 Per Share
+EICHERMOT,EQ,2655.2,2747.0,2598.9,2618.0,2643.85,-0.98,871638.0,23266.2,09-Aug-2021,Annual General Meeting/Dividend - Rs 17 Per Share
+HDFCBANK,EQ,1477.5,1486.7,1460.0,1463.25,1474.95,-0.79,12462604.0,183885.72,29-Jun-2021,Dividend - Rs 6.50 Per Share
