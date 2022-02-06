@@ -172,12 +172,7 @@ def main():
 
         # st.subheader("Let's Trade")
         image = Image.open('images/main.jpg')
-        st.markdown(
-            """
-            Please feel free to try it out and provide your feedbacks or suggestions for any improvement.🙏
-            """
-        )
-
+        st.markdown("""Please feel free to try it out and provide your feedbacks or suggestions for any improvement.🙏""")
         st.image(image, use_column_width=True)
     elif page == '📈 U.S. Stock Markets':
         ticker_list = get_ticker_base()
@@ -192,11 +187,11 @@ def main():
                 if st.button("Sector"):
                     st.info(ticker.info['sector'])
                 if st.button("Total Revenue"):
-                    st.info(ticker.info['totalRevenue'])
+                    st.info(str(ticker.info['totalRevenue'])+'💲')
                 if st.button("Gross Profit"):
-                    st.info(ticker.info['grossProfits'])
+                    st.info(str(ticker.info['grossProfits'])+'💲')
                 if st.button("Total Debt"):
-                    st.info(ticker.info['totalDebt'])
+                    st.info(str(ticker.info['totalDebt'])+'💲')
 
                 if st.checkbox('Get Stock Charts'):
                     st.subheader("Get Stock Chart")
@@ -221,7 +216,7 @@ def main():
                         if st.button('Show Detailed Chart'):
                             chart = get_detailed_chart_copy(
                                 data, name=str(stock_chosen[0]))
-                            with st.spinner(text='In progress'):
+                            with st.spinner(text='Hold on....'):
                                 time.sleep(5)
                                 st.success('Hooray!!!')
                                 st.plotly_chart(
@@ -249,13 +244,13 @@ def main():
                 st.info(
                     'Stock Selected --> {}'.format("Tata Consultancy Services Limited"))
                 if st.button("Get Average Price"):
-                    st.info("3702.93")
+                    st.info("3702.93"+"₹")
                 if st.button("Get Open Price"):
-                    st.info("3646.0")
+                    st.info("3646.0"+"₹")
                 if st.button("Get Close Price"):
-                    st.info("3690.05")
+                    st.info("3690.05"+"₹")
                 if st.button("Get Buy Price"):
-                    st.info("3690.05")
+                    st.info("3690.05"+"₹")
             st.subheader('Get Stock Charts')
             if st.checkbox('Get Stock Charts'):
                 start_period = st.date_input(
@@ -268,7 +263,7 @@ def main():
                 st.plotly_chart(chart)
                 if st.button('Show Detailed Chart'):
                     chart = get_detailed_chart_copy(data, name='TCS')
-                    with st.spinner(text='In progress'):
+                    with st.spinner(text='Hold on....'):
                         time.sleep(5)
                         st.success('Hooray!!!')
                         st.plotly_chart(chart, use_container_width=True)
