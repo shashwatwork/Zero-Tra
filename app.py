@@ -3,11 +3,12 @@ import pandas as pd
 from PIL import Image
 import cufflinks as cf
 import time
-import webbrowser
 import yfinance as yf
 from nsetools import Nse
 from nsepy import get_history
 from datetime import date
+from bokeh.models.widgets import Div
+
 cf.set_config_file(theme='white', sharing='public', offline=True)
 
 
@@ -167,8 +168,9 @@ def get_news_data(ticker):
 
     data = ticker.get_news()
     title_list, link_list = pre_process_news(data)
+    news_dictionary = dict(zip(title_list, link_list))
 
-    return title_list, link_list
+    return title_list, news_dictionary
 
 
 def pre_process_news(ndata):
@@ -264,11 +266,15 @@ def main():
                                     chart, use_container_width=True)
                 if st.checkbox('Get News'):
                     st.subheader("Get Stock News")
-                    title_list, link_list = get_news_data(ticker=ticker)
-                    news_dictionary = dict(zip(title_list, link_list))
+                    title_list, news_dictionary = get_news_data(ticker=ticker)
                     news_link = st.selectbox("Choose a News", title_list)
                     if st.button('Open in Browser'):
-                        webbrowser.open_new_tab(news_dictionary.get(news_link))
+                        news_link = news_dictionary.get(news_link)
+                        js_quote = "window.open(" + \
+                            "'" + (news_link) + "'" + ")"
+                        html = '<img src onerror="{}">'.format(js_quote)
+                        div = Div(text=html)
+                        st.bokeh_chart(div)
                 if st.checkbox('Get Analyst Recommendations'):
                     st.subheader("Get Recommendations")
                     chart = get_recomm(ticker=ticker)
