@@ -3,6 +3,7 @@ import pandas as pd
 from PIL import Image
 import cufflinks as cf
 import time
+import webbrowser
 import yfinance as yf
 from nsetools import Nse
 from nsepy import get_history
@@ -55,6 +56,12 @@ def get_stock_chart(data, name):
     # qf.add_volume(name='Volume',up_color='green', down_color='red')
     chart = qf.iplot(asFigure=True)
     return chart
+
+def get_actions_data(ticker):
+    data = ticker.get_actions()
+    chart = data.iplot(asFigure=True,kind='line',xTitle='Timeline',yTitle='Dividends/Splits',title='Dividends and Splits',fill=True)
+    return chart
+
 
 
 def get_detailed_chart(data, name):
@@ -153,6 +160,21 @@ def get_hist_data_nse_copy():
 
     return data
 
+@st.cache
+def get_news_data(ticker):
+
+    data = ticker.get_news()
+    title_list,link_list = pre_process_news(data)
+
+    return title_list,link_list
+
+def pre_process_news(ndata):
+    title_list = list()
+    link_list = list()
+    for i in ndata:
+        title_list.append(i['title'])
+        link_list.append(i['link'])
+    return title_list,link_list
 
 def main():
     st.sidebar.header('📈Zero-Tra Proto Trading App by @shashwat 👨‍🔧v0.1')
@@ -192,6 +214,9 @@ def main():
                     st.info(str(ticker.info['grossProfits'])+'💲')
                 if st.button("Total Debt"):
                     st.info(str(ticker.info['totalDebt'])+'💲')
+                if st.button("Get Stock Dividends/Splits"):
+                    chart = get_actions_data(ticker=ticker)
+                    st.plotly_chart(chart)
 
                 if st.checkbox('Get Stock Charts'):
                     st.subheader("Get Stock Chart")
@@ -221,7 +246,13 @@ def main():
                                 st.success('Hooray!!!')
                                 st.plotly_chart(
                                     chart, use_container_width=True)
-
+                if st.checkbox('Get News'):
+                     st.subheader("Get Stock News")
+                     title_list,link_list = get_news_data(ticker = ticker)
+                     news_dictionary = dict(zip(title_list, link_list))
+                     news_link = st.selectbox("Choose a News", title_list)
+                     if st.button('Open in browser'):
+                         webbrowser.open_new_tab(news_dictionary.get(news_link))
         else:
             st.error('Please select at least one Stock in the input above')
 
