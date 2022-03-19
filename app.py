@@ -57,11 +57,12 @@ def get_stock_chart(data, name):
     chart = qf.iplot(asFigure=True)
     return chart
 
+
 def get_actions_data(ticker):
     data = ticker.get_actions()
-    chart = data.iplot(asFigure=True,kind='line',xTitle='Timeline',yTitle='Dividends/Splits',title='Dividends and Splits',fill=True)
+    chart = data.iplot(asFigure=True, kind='line', xTitle='Timeline',
+                       yTitle='Dividends/Splits', title='Dividends and Splits', fill=True)
     return chart
-
 
 
 def get_detailed_chart(data, name):
@@ -160,13 +161,15 @@ def get_hist_data_nse_copy():
 
     return data
 
+
 @st.cache
 def get_news_data(ticker):
 
     data = ticker.get_news()
-    title_list,link_list = pre_process_news(data)
+    title_list, link_list = pre_process_news(data)
 
-    return title_list,link_list
+    return title_list, link_list
+
 
 def pre_process_news(ndata):
     title_list = list()
@@ -174,7 +177,19 @@ def pre_process_news(ndata):
     for i in ndata:
         title_list.append(i['title'])
         link_list.append(i['link'])
-    return title_list,link_list
+    return title_list, link_list
+
+
+@st.cache(allow_output_mutation=True)
+def get_recomm(ticker):
+
+    data = ticker.get_recommendations().tail(20).reset_index()
+    data = data.groupby(['Firm', 'To Grade'])['Action'].count()
+    chart = data.iplot(asFigure=True, kind='bar', xTitle='Analyst',
+                       yTitle='Action', title='Latest Analyst Firm Recommendations')
+
+    return chart
+
 
 def main():
     st.sidebar.header('📈Zero-Tra Proto Trading App by @shashwat 👨‍🔧v0.1')
@@ -194,7 +209,8 @@ def main():
 
         # st.subheader("Let's Trade")
         image = Image.open('images/main.jpg')
-        st.markdown("""Please feel free to try it out and provide your feedbacks or suggestions for any improvement.🙏""")
+        st.markdown(
+            """Please feel free to try it out and provide your feedbacks or suggestions for any improvement.🙏""")
         st.image(image, use_column_width=True)
     elif page == '📈 U.S. Stock Markets':
         ticker_list = get_ticker_base()
@@ -247,12 +263,17 @@ def main():
                                 st.plotly_chart(
                                     chart, use_container_width=True)
                 if st.checkbox('Get News'):
-                     st.subheader("Get Stock News")
-                     title_list,link_list = get_news_data(ticker = ticker)
-                     news_dictionary = dict(zip(title_list, link_list))
-                     news_link = st.selectbox("Choose a News", title_list)
-                     if st.button('Open in browser'):
-                         webbrowser.open_new_tab(news_dictionary.get(news_link))
+                    st.subheader("Get Stock News")
+                    title_list, link_list = get_news_data(ticker=ticker)
+                    news_dictionary = dict(zip(title_list, link_list))
+                    news_link = st.selectbox("Choose a News", title_list)
+                    if st.button('Open in browser'):
+                        webbrowser.open_new_tab(news_dictionary.get(news_link))
+                if st.checkbox('Get Analyst Recommendations'):
+                    st.subheader("Get Recommendations")
+                    chart = get_recomm(ticker=ticker)
+                    st.plotly_chart(chart, use_container_width=True)
+
         else:
             st.error('Please select at least one Stock in the input above')
 
