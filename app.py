@@ -1,3 +1,4 @@
+from turtle import color
 import streamlit as st
 import pandas as pd
 from PIL import Image
@@ -61,7 +62,7 @@ def get_stock_chart(data, name):
 def get_actions_data(ticker):
     data = ticker.get_actions()
     chart = data.iplot(asFigure=True, kind='line', xTitle='Timeline',
-                       yTitle='Dividends/Splits', title='Dividends and Splits', fill=True)
+                       yTitle='Dividends/Splits', title='Dividends and Splits', fill=True, rangeslider=True)
     return chart
 
 
@@ -192,7 +193,7 @@ def get_recomm(ticker):
 
 
 def main():
-    st.sidebar.header('📈Zero-Tra Proto Trading App by @shashwat 👨‍🔧v0.1')
+    st.sidebar.header('📈Zero-Tra Proto Trading App by @shashwat 👨‍🔧v0.2')
     st.sidebar.subheader('Choose a page to proceed:')
     page = st.sidebar.selectbox(
         "", ["🚀 Get Started", "📈 U.S. Stock Markets", "📈 Indian Stock Markets - NSE", "⚡ Crypto"])
@@ -267,7 +268,7 @@ def main():
                     title_list, link_list = get_news_data(ticker=ticker)
                     news_dictionary = dict(zip(title_list, link_list))
                     news_link = st.selectbox("Choose a News", title_list)
-                    if st.button('Open in browser'):
+                    if st.button('Open in Browser'):
                         webbrowser.open_new_tab(news_dictionary.get(news_link))
                 if st.checkbox('Get Analyst Recommendations'):
                     st.subheader("Get Recommendations")
