@@ -8,3 +8,4 @@ cufflinks==0.17.3
 yahoofinancials==1.6
 yfinance==0.1.68
 Pillow==7.0.0
+bokeh==2.4.1
