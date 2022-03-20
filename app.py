@@ -204,8 +204,11 @@ def main():
 		<div style="background-color:#ffffff;"><b><p style="color:#5655a3;font-size:60px;"> Zero-Tra</p></b></div>
 		<div style="background-color:#ffffff;"><b><p style="color:#5655a3;font-size:20px;"> 🚀 Zero-Tra is an Proto Trading and Analysis Streamlit App.Application provides Stock analysis for three markets- <b>U.S. Stock markets,Indian Stock Markets & Crypto</b>.<br> <br><b>Application still in development Phase. Do Check it out after sometime for really cool stuffs!!!!😉</b></p></b></div>
 		<p align="center"> 			
-            <b> 👈Choose the page on the left sidebar to proceed </b>
-        </p>
+            <b> 👈Choose the page on the left sidebar to proceed !</b><br><br>
+            <b> 🤩What's New (Only for U.S Stock Markets)  </b> <br>
+            <i> 🚀Get Dividends and Splits chart for Stocks   </i><br>
+            <i> 🚀Get latest News Related to Stocks </i><br>
+            <i> 🚀Get latest Analyst Firm Recommendations for listed Stock </i><br></p>
 		"""
         st.markdown(html_temp, unsafe_allow_html=True)
 
